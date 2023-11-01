@@ -6,7 +6,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <header className='fixed top-0 left-0 w-full bg-white'>
+      <header className='fixed top-0 left-0 w-full z-50 bg-white py-[30px]'>
         <Header />
       </header>
       <Component {...pageProps} />

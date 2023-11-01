@@ -17,7 +17,7 @@
 }
 
 body {
-  font-family: Saira;
+  font-family: 'Saira';
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -29,3 +29,31 @@ body {
   background: linear-gradient(102deg, #083F9B 0%, #7F56D9 93.39%);
 }
 
+.container {
+  max-width: 1670px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+@font-face {
+  font-family: 'Saira';
+  src: url('../../public/fonts/Saira/Saira-VariableFont_wdth\,wght.ttf');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Rowdies';
+  src: url('../../public/fonts/Rowdies/Rowdies-Bold.ttf');
+  font-style: normal;
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Rowdies';
+  src: url('../../public/fonts/Rowdies/Rowdies-Bold.ttf');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Rowdies';
+  src: url('../../public/fonts/Rowdies/Rowdies-Bold.ttf');
+  font-style: normal;
+  font-weight: 700;
+}

@@ -1,0 +1,236 @@
+.navbar_menu {
+  @media screen and (max-width: 780px) {
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    left: 0;
+    top: -400px;
+    height: 300px;
+    z-index: 2;
+    ul {
+      flex-direction: column;
+    }
+    a {
+      margin-left: 0px !important;
+      margin-top: 30px;
+    }
+  }
+  transition: .3s;
+}
+
+.toggle {
+  display: none;
+  @media screen and (max-width: 780px) {
+    display: flex;
+  }
+}
+.active {
+  top: 120px !important;
+}
+.deactive {
+  top: -400px !important;
+}
+.hero-bg {
+  fill: linear-gradient(
+    257deg,
+    rgba(4, 1, 108, 0.8) 0.69%,
+    rgba(74, 22, 189, 0.8) 100%
+  );
+}
+.main {
+  @media screen and (max-width: 1590px) {
+    margin-top: 60px !important;
+  }
+
+  @media screen and (max-width: 1385px) {
+    padding-top: 120px !important;
+    padding-bottom: 30px;
+  }
+}
+
+.title {
+  @media screen and (max-width: 1790px) {
+    font-size: 75px !important;
+    max-width: 800px !important;
+  }
+  @media screen and (max-width: 1385px) {
+    font-size: 65px !important;
+  }
+  @media screen and (max-width: 1210px) {
+    font-size: 55px !important;
+  }
+  @media screen and (max-width: 576px) {
+    font-size: 50px !important;
+    line-height: 60px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 45px !important;
+    line-height: 50px;
+  }
+}
+.btn {
+  @media screen and (max-width: 1385px) {
+    margin: 40px 0;
+  }
+}
+.input {
+  @media screen and (max-width: 1385px) {
+    padding: 15px 10px 15px 20px;
+  }
+}
+.submit {
+  @media screen and (max-width: 1385px) {
+    padding: 5px 20px;
+  }
+}
+.bg_rounded {
+  @media screen and (max-width: 1790px) {
+    max-width: 500px !important;
+    max-height: 450px !important;
+    filter: blur(80px) !important;
+  }
+  @media screen and (max-width: 1210px) {
+    max-width: 400px !important;
+    max-height: 350px !important;
+  }
+}
+.home_left {
+  @media screen and (max-width: 1065px) {
+    width: 100%;
+  }
+}
+.home_right {
+  @media screen and (max-width: 1385px) {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (max-width: 1065px) {
+    display: none !important;
+  }
+}
+.vue_icon {
+  @media screen and (max-width: 1760px) {
+    width: 170px !important;
+    height: 140px;
+    right: 0 !important;
+  }
+  /* @media screen and (max-width: 1660px) {
+        display: none !important;
+      } */
+}
+.react_icon {
+  @media screen and (max-width: 1760px) {
+    width: 170px !important;
+    height: 140px;
+  }
+  @media screen and (max-width: 1210px) {
+    top: 60% !important;
+  }
+  /* @media screen and (max-width: 1660px) {
+        display: none !important;
+      } */
+}
+.gate_icon {
+  @media screen and (max-width: 1510px) {
+    display: none !important;
+    transition: display 0.3s;
+  }
+}
+.main_image {
+  @media screen and (max-width: 1385px) {
+    width: 420px !important;
+  }
+}
+.carusel_wrapper {
+  padding: 34px;
+  background-color: #f2efe8;
+}
+.carusel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 6));
+  }
+}
+.slider {
+  $animationSpeed: 20s;
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+  }
+
+  &::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+
+  &::before {
+    left: 0;
+    top: 0;
+  }
+
+  .slide_track {
+    animation: scroll $animationSpeed linear infinite;
+    display: flex;
+    width: calc(250px * 6);
+  }
+
+  .slide {
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+}
+.learn_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-right: 1px solid white;
+
+  padding: 0 93px;
+  color: #fff;
+  img {
+    margin-bottom: 36px;
+  }
+  h5 {
+    margin-bottom: 20px;
+  }
+  &:last-child {
+    border: none;
+  }
+  @media screen and (max-width: 1320px) {
+    padding: 0 40px;
+  }
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    border: none;
+    margin-bottom: 30px;
+    p {
+      max-width: 400px;
+    }
+  }
+  // border-image: url("../../public/icon/border.svg") 0 2px 0 0 / 0 2px 0 0;
+}
