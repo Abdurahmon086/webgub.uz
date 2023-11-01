@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }) {
         <Header />
       </header>
       <Component {...pageProps} />
-      <footer style={{ background: " linear-gradient(95deg, #331DA8 0%, #865AEF 100.96%)" }}>
+      <footer style={{ background: "linear-gradient(95deg, #331DA8 0%, #865AEF 100.96%)" }}>
         <Footer />
       </footer >
     </>
