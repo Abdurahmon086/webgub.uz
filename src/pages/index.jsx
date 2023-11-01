@@ -13,6 +13,8 @@ import software from '../../public/icon/software.svg'
 import phone from '../../public/image/phone.png'
 import Card from '@/components/Card/Card'
 import MiniCard from '@/components/Card/MiniCard'
+import Header from '@/components/Header/header'
+import Footer from '@/components/Footer/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +24,9 @@ export default function Home() {
       <Head>
         <title>Next app</title>
       </Head>
+      <header className='fixed top-0 left-0 w-full bg-white'>
+        <Header />
+      </header>
       <main className={`${inter.className}`}>
         {/* <section className='mt-[119px] hero-bg w-full' style={{ background: "linear-gradient(257deg, rgba(4, 1, 108, 0.80) 0.69%, rgba(74, 22, 189, 0.80) 100%)" }}>
           <div className="container mx-auto bg-[url('../../public/image/room.png')] bg-no-repeat bg-[center_bottom_-4rem] flex justify-between ">
@@ -149,6 +154,9 @@ export default function Home() {
           </div>
         </section>
       </main >
+      <footer style={{ background: "linear-gradient(95deg, #331DA8 0%, #865AEF 100.96%)" }}>
+        <Footer />
+      </footer >
     </>
   )
 }
