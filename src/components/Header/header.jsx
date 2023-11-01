@@ -13,8 +13,8 @@ function Header() {
                 <Image src={logo} width={216} height={60} alt='webgub.uz logo' />
                 <div className={`${main.navbar_menu} flex items-center ${active ? main.active : main.deactive}`}>
                     <ul className='flex gap-[72px] '>
-                        <li><Link href="/" className='text-[20px] font-medium text-[#1B2336]'>Courses</Link></li>
-                        <li><Link href="/" className='text-[20px] font-medium text-[#1B2336]' >Services</Link></li>
+                        <li><Link href="/courses" className='text-[20px] font-medium text-[#1B2336]'>Courses</Link></li>
+                        <li><Link href="/services" className='text-[20px] font-medium text-[#1B2336]' >Services</Link></li>
                     </ul>
                     <Link href={'/login'} className='ml-[103px] md:ml-[143px] lg:ml-[243px] py-2 px-14 btn-bg text-[#FFF] text-[20px] font-medium '>Join</Link>
                 </div>
