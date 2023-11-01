@@ -56,25 +56,15 @@ export default function Home() {
       <Head>
         <title>Next app</title>
       </Head>
-<<<<<<< HEAD
-      <header className='fixed top-0 left-0 w-full bg-white'>
+      <header className="fixed top-0 left-0 w-full z-50 bg-white py-[30px]">
         <Header />
       </header>
-      <main className={`${inter.className}`}>
-        {/* <section className='mt-[119px] hero-bg w-full' style={{ background: "linear-gradient(257deg, rgba(4, 1, 108, 0.80) 0.69%, rgba(74, 22, 189, 0.80) 100%)" }}>
-          <div className="container mx-auto bg-[url('../../public/image/room.png')] bg-no-repeat bg-[center_bottom_-4rem] flex justify-between ">
-            <div className="left mt-[145px]">
-
-              <p>Successful coaches are visionaries</p>
-              <h1>Good <span className='text-[#4BE5CA]'> coaching </span>is good teaching & nothing else.
-=======
       <main>
         <section className={`${main.main} relative mt-[119px] pt-[167px] hero-bg w-full`} style={{ background: "linear-gradient(257deg, rgba(4, 1, 108, 0.80) 0.69%, rgba(74, 22, 189, 0.80) 100%)" }}>
           <div className={`container mx-auto flex justify-between`}>
             <div className={`${main.home_left}`}>
               <p className='text-white-800 font-semibold leading-5 tracking-[3px] mb-[30px]'>Successful coaches are visionaries</p>
               <h1 style={{ fontFamily: 'Rowdies' }} className={`${main.title} max-w-[900px] text-[80px] leading-[90px] font-normal text-white`}>Good <span className='text-green-500'> coaching </span>is good teaching & nothing else.
->>>>>>> 7d4a15f0eec41e200fc15c7992fff95e7dfdfe05
                 InshaaAlloh</h1>
               <a href="#" className={`${main.btn} inline-block mt-[80px] mb-[80px] px-[30px] py-[15px] text-white border-[1px] border-white rounded-[10px]`}>Coureses</a>
               <form className='relative mb-10 w-full py-[10px] sm:w-[470px] md:w-[490px]'>
@@ -113,21 +103,23 @@ export default function Home() {
             </div>
           </div>
         </section>
-        {/* <section style={{ background: "linear-gradient(180deg, #D9ECFF 0%, rgba(240, 243, 255, 0.00) 127.78%)" }}>
-          <div className="container mx-auto">
-            <h2>Featured <span> Course</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporidunt ut labore veniam...</p>
-            <div className="grid grid-cols-3 gap-11">
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+        <section className='py-[50px] md:py-[70px] lg:py-[100px]' style={{ background: "linear-gradient(180deg, #D9ECFF 0%, rgba(240, 243, 255, 0.00) 127.78%)" }}>
+          <div className="container mx-auto pb-[72px] max-lg:pb-12">
+            <div className="bg-[url('../../public/icon/half-rounded.svg')] bg-no-repeat bg-left-top">
+              <Title color={'black'}>Featured <span className='text-green-500'>courses</span></Title>
+              <Text color={'black'} styles={'max-w-[729px] flex mx-auto mb-[115px]'}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporidunt ut labore veniam...</Text>
+              <ul className='grid grid-cols-3 mt-[20px] gap-[67px] max-lg:grid-cols-2 max-md:grid-cols-1 '>
+                <li><Card /></li>
+                <li><Card /></li>
+                <li><Card /></li>
+                <li><Card /></li>
+                <li><Card /></li>
+                <li><Card /></li>
+              </ul>
+              <button className='rounded-[10px] bg-gradient-linear px-[20px] py-[17px] block text-white mx-auto mt-[90px]'> Explore courses</button>
             </div>
-            <button> Explore courses</button>
           </div>
-        </section> */}
+        </section>
         <section style={{ background: "linear-gradient(72deg, rgba(8, 79, 199, 0.90) 26.49%, rgba(127, 86, 217, 0.90) 85.53%)", padding: '113px 0 144px' }} className='pt-60px] pb-[70px] md:pt-[113px] md:pb-[144px] '>
           <div className="container mx-auto">
             <Title color={'white'}>Why <span className='text-green-500'>learn</span> with our courses?</Title>
@@ -162,7 +154,7 @@ export default function Home() {
           <div className="container mx-auto">
             <h4 className="text-[45px] font-bold text-center leading-[30px] font-['Rowdies'] max-sm:text-3xl">Top <span className='text-[#2AAA94]'> Categories</span></h4>
             <p className='mt-[42px] text-[#4E596B] text-[25px] font-medium text-center max-sm:text-lg max-sm:mt-[20px]'> 12,000+ unique online course list designs</p>
-            <ul className='flex justify-center gap-[20px] mt-[100px] max-2xl:flex-wrap '>
+            <ul className='flex justify-center items-stretch gap-[20px] mt-[100px] max-2xl:flex-wrap '>
               <li>
                 <MiniCard />
               </li>
