@@ -18,7 +18,7 @@
       margin-top: 30px;
     }
   }
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .toggle {
@@ -209,9 +209,12 @@
   justify-content: center;
   text-align: center;
   border-right: 1px solid white;
-
+  width: 100%;
   padding: 0 93px;
   color: #fff;
+  @media screen and (min-width: 992px) {
+    width: calc(100% / 3);
+  }
   img {
     margin-bottom: 36px;
   }
