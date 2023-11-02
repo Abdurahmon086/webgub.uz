@@ -45,36 +45,45 @@ let dataArray = [
     img: uzum,
   }
 ]
+import { Form, Input, Modal, Select } from 'antd';
 import MiniCard from '@/components/Card/MiniCard'
 import Footer from '@/components/Footer/footer'
 import Header from '@/components/Header/header'
 import { useFetch } from '@/hooks/useFetch'
 import { useState } from 'react'
-import CourseCreate from '@/components/Forms/CourseCreate'
-import { Form } from 'antd'
+// import CourseCreate from '@/components/Forms/CourseCreate'
 import { sendData } from '@/service/common'
 
 
 export default function Home() {
   let [more, setMore] = useState(true);
   let [show, setShow] = useState(false);
+  let [courseId, setCourseId] = useState(0);
   const [form] = Form.useForm();
   const handleClose = () => {
     setShow(false);
     form.validateFields().then((values) => {
-      delete values.confirm;
-      // if (selected) {
-      values.password || delete values.password;
-      sendData(`/user/register`, values).then(() => {
-        recall();
-        setIsModalOpen(false);
-      });
+      fetch("https://api.webhub.uz/api/v1/user/register",
+        {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify({ ...values })
+        })
+        .then(res =>
+          res.json()
+        ).then((data) => {
+          console.log(data);
+          localStorage.setItem('token', JSON.stringify(data.token))
+        })
+        .catch(function (res) { console.log(res) })
     });
   };
   const handleCancel = () => setShow(false);
   const handleShow = () => {
     setShow(true);
-
   };
   const { data, loading, error } = useFetch('https://api.webhub.uz/api/v1/course');
   const { data: service, loading: loading2 } = useFetch('https://api.webhub.uz/api/v1/service');
@@ -102,7 +111,49 @@ export default function Home() {
           <Header />
         </header>
         <main>
-          <CourseCreate form={form} show={show} handleClose={handleClose} handleCancel={handleCancel} />
+          {/* <CourseCreate form={form} show={show} handleClose={handleClose} handleCancel={handleCancel} /> */}
+          <Modal title="Basic Modal" open={show} onOk={handleClose} onCancel={handleCancel}>
+            <Form
+              layout='vertical'
+              name="basic"
+              labelCol={{
+                span: 8,
+              }}
+              wrapperCol={{
+                span: 16,
+              }}
+              style={{
+                maxWidth: 600,
+              }}
+              initialValues={{
+                remember: true,
+              }}
+              autoComplete="off"
+              form={form}
+            >
+              <Form.Item
+                label="Ism Familiya Sharifingiz"
+                name="fullName"
+              >
+                <Input placeholder='F.I.SH' />
+              </Form.Item>
+              <Form.Item
+                label="Telefon raqam"
+                name="phoneNumber"
+              >
+                <Input placeholder='987654321' />
+              </Form.Item>
+              <Select
+                placeholder="Select a option and change input text above"
+                // onChange={(e) => setCourseId(e.target.value)}
+                allowClear
+              >
+                {data.courses.map((item, index) => (
+                  <Option key={index} value={item.id}>{item.title}</Option>
+                ))}
+              </Select>
+            </Form>
+          </Modal >
           <section className={`${main.main} relative mt-[119px] pt-[167px] hero-bg w-full`} style={{ background: "linear-gradient(257deg, rgba(4, 1, 108, 0.80) 0.69%, rgba(74, 22, 189, 0.80) 100%)" }}>
             <div className={`container mx-auto flex justify-between`}>
               <div className={`${main.home_left}`}>

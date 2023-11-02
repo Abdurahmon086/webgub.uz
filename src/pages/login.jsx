@@ -27,14 +27,11 @@ function login() {
         });
     };
     return (
-        <div style={{
-            width: '100%', height: '100vh', display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+        <div className='flex items-center' style={{
+            width: '100%', height: '100vh',
             background: 'rgba(0,0,0,0.5)'
         }}>
             <Form
-                layout='vetical'
                 name="basic"
                 labelCol={{
                     span: 8,
@@ -43,47 +40,39 @@ function login() {
                     span: 16,
                 }}
                 style={{
-                    maxWidth: 700,
+                    width: 600,
                     margin: 'auto',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
                     background: '#fff',
-                    padding: '30px 50px'
+                    padding: '30px 20px',
+                    display: 'flex',
+                    flexDirection: 'column'
+                    
                 }}
                 initialValues={{
                     remember: true,
                 }}
                 autoComplete="off"
                 form={form}
+                layout='vertical'
             >
-                <Form.Item style={{ display: 'flex', flexDirection: 'column' }}
-                    label="Username"
+                <Form.Item
+                    label="Foydanaluvchi nomi"
                     name="username"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your username!',
-                        },
-                    ]}
                 >
-                    <Input />
+                    <Input placeholder='Foydanaluvchi nomi' />
                 </Form.Item>
 
-                <Form.Item style={{ display: 'flex', flexDirection: 'column' }}
-                    label="Password"
+                <Form.Item
+                    wrapperCol={{
+                        span: 16
+                    }}
+                    label="Parol"
                     name="password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input your password!',
-                        },
-                    ]}
                 >
-                    <Input.Password />
+                    <Input.Password placeholder='Parol...' />
                 </Form.Item>
 
-                <Form.Item style={{ display: 'flex', flexDirection: 'column' }}
+                <Form.Item
                     wrapperCol={{
                         offset: 8,
                         span: 16,

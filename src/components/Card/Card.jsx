@@ -2,46 +2,8 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import basket from '../../../public/icon/basket.svg'
 
-function Card({ title, description, image, students ,handleShow}) {
+function Card({ title, image, students ,handleShow}) {
 
-
-    // let createRequest = (url) => {
-    //     const [value, setValues] = React.useState({
-    //         category_name: ''
-    //     });
-    //     const { REACT_APP_BASE_URL } = process.env;
-    //     const locolToken = localStorage.getItem('token')
-    //     const change = (e) => {
-    //         setValues((prevstate) => ({
-    //             ...prevstate,
-    //             [e.target.name]: e.target.value,
-    //         }));
-    //     };
-    //     const setData = (e) => {
-    //         e.preventDefault();
-
-    //         let formdata = new FormData();
-    //         for (const event in value) {
-    //             formdata.append(event, value[event]);
-    //         }
-    //         const option = {
-    //             method: "POST",
-    //             headers: {
-    //                 Authorization:
-    //                     "Bearer " +
-    //                     locolToken
-    //             },
-    //             body: formdata,
-    //             redirect: "follow",
-    //         };
-
-
-    //         fetch(`https://api.webhub.uz/api/v1/${url}`, option)
-    //             .then((res) => res.json())
-    //             .then((data) => console.log(data))
-    //             .catch((err) => console.log(err.message));
-    //     };
-    // }
     return (
         <div className='rounded-3xl bg-white'>
             <img src={image} className='rounded-t-3xl w-full h-[316px]' alt='image' />
