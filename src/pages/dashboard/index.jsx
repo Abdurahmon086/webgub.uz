@@ -15,6 +15,7 @@ function dashboard() {
 
     const [data, setData] = useState(null)
     const [course, setCourse] = useState(null)
+    const [service, setService] = useState(null)
 
     useEffect(() => {
         fetch('https://api.webhub.uz/api/v1/student', {
@@ -34,6 +35,15 @@ function dashboard() {
                 'Host': 'api.producthunt.com'
             }
         }).then(res => res.json()).then(data => setCourse(data.courses)).catch(err => console.log(err))
+
+        fetch('https://api.webhub.uz/api/v1/service', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzk4MTA5MjM5MThiMTQyMjdjYTY3ZCIsImlhdCI6MTY5ODg3NzUxM30.9XRZ7XR-0P1HXAvamkJsXJt5tb-Q8VA3gacGdh0vHww',
+                'Host': 'api.producthunt.com'
+            }
+        }).then(res => res.json()).then(data => setService(data.services)).catch(err => console.log(err))
     }, [])
 
     return (

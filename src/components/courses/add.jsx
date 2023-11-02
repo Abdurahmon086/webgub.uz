@@ -37,7 +37,7 @@ function AddCourses(props) {
             <Modal.Header >
                 <Modal.Title id="contained-modal-title-vcenter">
                     <div className='text-blue-950 font-semibold w-[750px] flex justify-between'>
-                        <p>  O'quvhi statusini o'zgartiring</p>
+                        <p>Kurs qo'shish</p>
                         <button onClick={props.onHide} className='text-gray-500 text-lg'>x</button>
                     </div>
                 </Modal.Title>
