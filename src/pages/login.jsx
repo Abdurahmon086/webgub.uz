@@ -7,7 +7,6 @@ function login() {
     const [form] = Form.useForm();
     const handleClose = () => {
         form.validateFields().then((values) => {
-            console.log(values);
             fetch("https://api.webhub.uz/api/v1/admin/login",
                 {
                     headers: {
@@ -20,7 +19,6 @@ function login() {
                 .then(res =>
                     res.json()
                 ).then((data) => {
-                    console.log(data);
                     localStorage.setItem('token', JSON.stringify(data.token))
                     localStorage.setItem('admin',JSON.stringify(data.admin))
                 }).then(router.push('/dashboard'))
@@ -36,9 +34,6 @@ function login() {
                 name="basic"
                 labelCol={{
                     span: 8,
-                }}
-                wrapperCol={{
-                    span: 16,
                 }}
                 style={{
                     width: 600,
@@ -64,9 +59,6 @@ function login() {
                 </Form.Item>
 
                 <Form.Item
-                    wrapperCol={{
-                        span: 16
-                    }}
                     label="Parol"
                     name="password"
                 >
@@ -74,13 +66,9 @@ function login() {
                 </Form.Item>
 
                 <Form.Item
-                    wrapperCol={{
-                        offset: 8,
-                        span: 16,
-                    }}
                 >
                     <Button style={{ background: "#0000ff" }} type="primary" htmlType="submit" onClick={handleClose}>
-                        Submit
+                        Login
                     </Button>
                 </Form.Item>
             </Form>

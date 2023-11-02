@@ -84,7 +84,7 @@ let categories = [
   },
 
 ]
-import { Form, Input, Modal, Select } from 'antd';
+import { Button, Form, Input, Modal, Select } from 'antd';
 import MiniCard from '@/components/Card/MiniCard'
 import Footer from '@/components/Footer/footer'
 import Header from '@/components/Header/header'
@@ -149,16 +149,12 @@ export default function Home() {
           <Header />
         </header>
         <main>
-          {/* <CourseCreate form={form} show={show} handleClose={handleClose} handleCancel={handleCancel} /> */}
-          <Modal title="Basic Modal" open={show} onOk={handleClose} onCancel={handleCancel}>
+          <Modal className={`${main.modal}`} title="Basic Modal" open={show} onOk={handleClose} onCancel={handleCancel}>
             <Form
               layout='vertical'
               name="basic"
               labelCol={{
                 span: 8,
-              }}
-              wrapperCol={{
-                span: 16,
               }}
               style={{
                 maxWidth: 600,
@@ -168,6 +164,14 @@ export default function Home() {
               }}
               autoComplete="off"
               form={form}
+              footer={[
+                <Button key="back" onClick={handleCancel}>
+                  Return
+                </Button>,
+                <Button key="submit" type="primary" loading={loading} onClick={handleClose}>
+                  Submit
+                </Button>,
+              ]}
             >
               <Form.Item
                 label="Ism Familiya Sharifingiz"
@@ -190,6 +194,9 @@ export default function Home() {
                   <Option key={index} value={item.id}>{item.title}</Option>
                 ))}
               </Select>
+              <Button style={{ background: "#0000ff",marginLeft:'30px' }} type="primary" htmlType="submit" onClick={handleClose}>
+                submit
+              </Button>
             </Form>
           </Modal >
           <section className={`${main.main} relative mt-[119px] pt-[167px] hero-bg w-full`} style={{ background: "linear-gradient(257deg, rgba(4, 1, 108, 0.80) 0.69%, rgba(74, 22, 189, 0.80) 100%)" }}>
@@ -346,7 +353,7 @@ export default function Home() {
               <iframe className='w-full h-[727px] rounded-[68px] mt-[80px]' src="https://www.youtube.com/embed/X16_CEHd6Ec" title="Tartiblanmagan vaqt, jilovlanmagan ot kabidir" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
               <div className="bg-[url('../../public/icon/half-rounded.svg')] bg-no-repeat bg-left-top">
                 <h4 className="mt-[132px] text-center text-[#2AAA94] text-[45px] leading-[55px] font-bold font-['Rowdies'] max-lg:mt-[80px] max-sm:text-3xl">Services</h4>
-                <p className='text-[#4E596B] text-center mt-[42px] max-lg:mt-[20px] max-sm:text-lg'>What our student say about us</p>
+                <Text styles={'mt-[42px]'}>What our student say about us</Text>
                 <ul className='grid grid-cols-3 mt-[20px] gap-[67px] max-lg:grid-cols-2 max-md:grid-cols-1 pb-14 '>
                   {
                     service.services.map((item, index) => {
