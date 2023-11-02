@@ -45,18 +45,48 @@ let dataArray = [
     img: uzum,
   }
 ]
+import { Form, Input, Modal, Select } from 'antd';
 import MiniCard from '@/components/Card/MiniCard'
 import Footer from '@/components/Footer/footer'
 import Header from '@/components/Header/header'
 import { useFetch } from '@/hooks/useFetch'
 import { useState } from 'react'
+// import CourseCreate from '@/components/Forms/CourseCreate'
+import { sendData } from '@/service/common'
 
 
 export default function Home() {
   let [more, setMore] = useState(true);
+  let [show, setShow] = useState(false);
+  let [courseId, setCourseId] = useState(0);
+  const [form] = Form.useForm();
+  const handleClose = () => {
+    setShow(false);
+    form.validateFields().then((values) => {
+      fetch("https://api.webhub.uz/api/v1/user/register",
+        {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "POST",
+          body: JSON.stringify({ ...values })
+        })
+        .then(res =>
+          res.json()
+        ).then((data) => {
+          console.log(data);
+          localStorage.setItem('token', JSON.stringify(data.token))
+        })
+        .catch(function (res) { console.log(res) })
+    });
+  };
+  const handleCancel = () => setShow(false);
+  const handleShow = () => {
+    setShow(true);
+  };
   const { data, loading, error } = useFetch('https://api.webhub.uz/api/v1/course');
   const { data: service, loading: loading2 } = useFetch('https://api.webhub.uz/api/v1/service');
-  console.log(data);
   if (loading || loading2) {
     return (
       <h1>Loading...</h1>
@@ -70,11 +100,60 @@ export default function Home() {
       <>
         <Head>
           <title>Next app</title>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous"
+          />
         </Head>
         <header className="fixed top-0 left-0 w-full z-50 bg-white py-[30px]">
           <Header />
         </header>
         <main>
+          {/* <CourseCreate form={form} show={show} handleClose={handleClose} handleCancel={handleCancel} /> */}
+          <Modal title="Basic Modal" open={show} onOk={handleClose} onCancel={handleCancel}>
+            <Form
+              layout='vertical'
+              name="basic"
+              labelCol={{
+                span: 8,
+              }}
+              wrapperCol={{
+                span: 16,
+              }}
+              style={{
+                maxWidth: 600,
+              }}
+              initialValues={{
+                remember: true,
+              }}
+              autoComplete="off"
+              form={form}
+            >
+              <Form.Item
+                label="Ism Familiya Sharifingiz"
+                name="fullName"
+              >
+                <Input placeholder='F.I.SH' />
+              </Form.Item>
+              <Form.Item
+                label="Telefon raqam"
+                name="phoneNumber"
+              >
+                <Input placeholder='987654321' />
+              </Form.Item>
+              <Select
+                placeholder="Select a option and change input text above"
+                // onChange={(e) => setCourseId(e.target.value)}
+                allowClear
+              >
+                {data.courses.map((item, index) => (
+                  <Option key={index} value={item.id}>{item.title}</Option>
+                ))}
+              </Select>
+            </Form>
+          </Modal >
           <section className={`${main.main} relative mt-[119px] pt-[167px] hero-bg w-full`} style={{ background: "linear-gradient(257deg, rgba(4, 1, 108, 0.80) 0.69%, rgba(74, 22, 189, 0.80) 100%)" }}>
             <div className={`container mx-auto flex justify-between`}>
               <div className={`${main.home_left}`}>
@@ -128,10 +207,10 @@ export default function Home() {
                     data.courses.map((item, index) => {
                       if (more) {
                         if (index < 6) {
-                          return <li key={index}><Card image={item.image} title={item.title} /></li>
+                          return <li key={index}><Card image={item.image} title={item.title} handleShow={handleShow} /></li>
                         }
                       } else {
-                        return <li key={index}><Card image={item.image} title={item.title} /></li>
+                        return <li key={index}><Card image={item.image} title={item.title} handleShow={handleShow} /></li>
                       }
                     }
                     )
@@ -229,7 +308,7 @@ export default function Home() {
                 <ul className='grid grid-cols-3 mt-[20px] gap-[67px] max-lg:grid-cols-2 max-md:grid-cols-1 pb-14 '>
                   {
                     service.services.map((item, index) => (
-                      <li key={index}><Card image={'http://api.webhub.uz/' + item.image} title={item.title} /></li>
+                      <li key={index}><Card image={'http://api.webhub.uz/' + item.image} title={item.title} handleShow={handleShow} /></li>
                     ))
                   }
                 </ul>
@@ -240,6 +319,17 @@ export default function Home() {
         <footer style={{ background: "linear-gradient(95deg, #331DA8 0%, #865AEF 100.96%)" }}>
           <Footer />
         </footer >
+        <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossorigin></script>
+
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
+          crossorigin></script>
+
+        <script
+          src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossorigin></script>
+
+        <script>var Alert = ReactBootstrap.Alert;</script>
       </>
     )
   }
