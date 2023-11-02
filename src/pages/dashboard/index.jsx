@@ -17,23 +17,36 @@ import Aside from '@/components/Aside/aside'
 import Students from './students'
 import Link from 'next/link'
 import UsersBoard from './sozlamalar'
+import Curses from './kurslar'
+import AddCourses from '@/components/courses/add'
 
 function dashboard() {
 
     const [holat, setHolat] = useState(false)
+    const [add, setAdd] = useState(false)
     const [menus, setMenus] = useState(false)
     const [users, setUsers] = useState(true)
     const [data, setData] = useState(null)
+    const [course, setCourse] = useState(null)
 
     useEffect(() => {
-        fetch('https://api.webhub.uz/api/v1/student/get-all', {
+        fetch('https://api.webhub.uz/api/v1/student', {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzk4MTA5MjM5MThiMTQyMjdjYTY3ZCIsImlhdCI6MTY5ODg3NzUxM30.9XRZ7XR-0P1HXAvamkJsXJt5tb-Q8VA3gacGdh0vHww',
                 'Host': 'api.producthunt.com'
             }
-        }).then(res => res.json()).then(data => setData(data.students))
+        }).then(res => res.json()).then(data => setData(data.students));
+
+        fetch('https://api.webhub.uz/api/v1/course', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzk4MTA5MjM5MThiMTQyMjdjYTY3ZCIsImlhdCI6MTY5ODg3NzUxM30.9XRZ7XR-0P1HXAvamkJsXJt5tb-Q8VA3gacGdh0vHww',
+                'Host': 'api.producthunt.com'
+            }
+        }).then(res => res.json()).then(data => setCourse(data.courses)).catch(err => console.log(err))
     }, [])
 
     return (
@@ -61,7 +74,7 @@ function dashboard() {
             </header>
             <main className='flex bg-slate-100 h-[100vh]'>
                 <Aside menus={menus} />
-                <section className='p-6'>
+                {/* <section className='p-6'>
                     <ul className='flex flex-wrap gap-7'>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
@@ -83,37 +96,41 @@ function dashboard() {
                         </li>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
-                                <h4 className='text-red-500 text-2xl font-bold'>Uquvchilar</h4>
+                                <h4 className='text-red-500 text-2xl font-bold'>O'qimaydigonlar</h4>
                             </div>
                             <div className="flex items-center justify-between py-4 px-6"><h5 className='text-red-500 text-6xl font-bold'>0</h5> <Image src={block} alt='students icon' height={65} /></div>
                         </li>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
-                                <h4 className='text-blue-400 text-2xl font-bold'>Uquvchilar</h4>
+                                <h4 className='text-blue-400 text-2xl font-bold'>Buyurtmachilar</h4>
                             </div>
                             <div className="flex items-center justify-between py-4 px-6"><h5 className='text-blue-400 text-6xl font-bold'>1</h5> <Image src={userBX} alt='students icon' height={65} /></div>
                         </li>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
-                                <h4 className='text-gray-500 text-2xl font-bold'>Uquvchilar</h4>
+                                <h4 className='text-gray-500 text-2xl font-bold'>Xizmatlar</h4>
                             </div>
                             <div className="flex items-center justify-between py-4 px-6"><h5 className='text-gray-500 text-6xl font-bold'>1</h5> <Image src={car} alt='students icon' height={65} /></div>
                         </li>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
-                                <h4 className='text-blue-800 text-2xl font-bold'>Uquvchilar</h4>
+                                <h4 className='text-blue-800 text-2xl font-bold'>Kurslar</h4>
                             </div>
                             <div className="flex items-center justify-between py-4 px-6"><h5 className='text-blue-800 text-6xl font-bold'>1</h5> <Image src={book} alt='students icon' height={65} /></div>
                         </li>
                     </ul>
-                </section>
+                </section> */}
                 {/* <Students data={data} onHide={() => setHolat(true)} /> */}
                 {/* <UsersBoard /> */}
+                <Curses data={course} onHide={() => setAdd(true)} />
             </main >
-            <Holat
+            <AddCourses
+                show={add}
+                onHide={() => setAdd(false)} />
+            {/* <Holat
                 show={holat}
                 onHide={() => setHolat(false)}
-            />
+            /> */}
         </>
     )
 }
