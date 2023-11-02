@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
-function AddCourses(props) {
+function AddServices(props) {
 
     // const handleClose = () => {
     //     form.validateFields().then((values) => {
@@ -31,19 +31,19 @@ function AddCourses(props) {
             <Modal.Header >
                 <Modal.Title id="contained-modal-title-vcenter">
                     <div className='text-blue-950 font-semibold w-[750px] flex justify-between'>
-                        <p>Kurs qo'shish</p>
+                        <p>Xizmat qo'shish</p>
                         <button onClick={props.onHide} className='text-gray-500 text-lg'>x</button>
                     </div>
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form className='flex flex-col gap-3 '>
-                    <label htmlFor="image" className='text-blue-950 text-xl font-semibold'>Kurs rasmi</label>
+                    <label htmlFor="image" className='text-blue-950 text-xl font-semibold'>Xizmat rasmi</label>
                     <input className='py-2 px-3 rounded border' type="file" name="image" id="image" />
-                    <label htmlFor="nomi" className='text-blue-950 text-xl font-semibold'>Kurs nomi</label>
-                    <input className='py-2 px-3 rounded border' type="text" name="nomi" id="nomi" placeholder="Kurs nomi" />
-                    <label htmlFor="des" className='text-blue-950 text-xl font-semibold'>Kurs haqida</label>
-                    <textarea className='py-2 px-3 rounded border' name="des" id="des" rows="10" placeholder='Kurs haqida'></textarea>
+                    <label htmlFor="nomi" className='text-blue-950 text-xl font-semibold'>Xizmat nomi</label>
+                    <input className='py-2 px-3 rounded border' type="text" name="nomi" id="nomi" placeholder="Xizmat nomi" />
+                    <label htmlFor="des" className='text-blue-950 text-xl font-semibold'>Xizmat haqida</label>
+                    <textarea className='py-2 px-3 rounded border' name="des" id="des" rows="10" placeholder='Xizmat haqida'></textarea>
                     <button className='w-[44px] h-[44px] bg-blue-500 rounded mt-3 text-white '> + </button>
                 </form>
             </Modal.Body>
@@ -54,4 +54,4 @@ function AddCourses(props) {
     )
 }
 
-export default AddCourses
+export default AddServices

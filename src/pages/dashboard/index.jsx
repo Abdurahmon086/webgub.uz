@@ -19,15 +19,20 @@ import Link from 'next/link'
 import UsersBoard from './sozlamalar'
 import Curses from './kurslar'
 import AddCourses from '@/components/courses/add'
+import Customers from './buyurtmachilar'
+import Services from './xizmatlar'
+import AddServices from '@/components/Services/add'
 
 function dashboard() {
 
     const [holat, setHolat] = useState(false)
     const [add, setAdd] = useState(false)
+    const [addService, setAddService] = useState(false)
     const [menus, setMenus] = useState(false)
     const [users, setUsers] = useState(true)
     const [data, setData] = useState(null)
     const [course, setCourse] = useState(null)
+    const [service, setService] = useState(null)
 
     useEffect(() => {
         fetch('https://api.webhub.uz/api/v1/student', {
@@ -47,6 +52,15 @@ function dashboard() {
                 'Host': 'api.producthunt.com'
             }
         }).then(res => res.json()).then(data => setCourse(data.courses)).catch(err => console.log(err))
+
+        fetch('https://api.webhub.uz/api/v1/service', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Mzk4MTA5MjM5MThiMTQyMjdjYTY3ZCIsImlhdCI6MTY5ODg3NzUxM30.9XRZ7XR-0P1HXAvamkJsXJt5tb-Q8VA3gacGdh0vHww',
+                'Host': 'api.producthunt.com'
+            }
+        }).then(res => res.json()).then(data => setService(data.services)).catch(err => console.log(err))
     }, [])
 
     return (
@@ -121,16 +135,21 @@ function dashboard() {
                     </ul>
                 </section> */}
                 {/* <Students data={data} onHide={() => setHolat(true)} /> */}
+                {/* <Curses data={course} onHide={() => setAdd(true)} /> */}
+                {/* <Customers /> */}
+                {/* <Services data={service} onHide={() => setAddService(true)} /> */}
                 {/* <UsersBoard /> */}
-                <Curses data={course} onHide={() => setAdd(true)} />
             </main >
+            <AddServices
+                show={addService}
+                onHide={() => setAddService(false)} />
             <AddCourses
                 show={add}
                 onHide={() => setAdd(false)} />
-            {/* <Holat
+            <Holat
                 show={holat}
                 onHide={() => setHolat(false)}
-            /> */}
+            />
         </>
     )
 }
