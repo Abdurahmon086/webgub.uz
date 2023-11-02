@@ -13,7 +13,7 @@ import Layout from './layout'
 
 function dashboard() {
 
-    const [data, setData] = useState(null)
+    const [data, setData] = useState({students:[],courses:[],services:[],})
     const [course, setCourse] = useState(null)
     const [service, setService] = useState(null)
 
@@ -73,13 +73,13 @@ function dashboard() {
                         </li>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
-                                <h4 className='text-green-700 text-2xl font-bold'>O'qiydigonlar</h4>
+                                <h4 className='text-green-700 text-2xl font-bold'>O'qiydiganlar</h4>
                             </div>
                             <div className="flex items-center justify-between py-4 px-6"><h5 className='text-green-700 text-6xl font-bold'>0</h5> <Image src={checkDuble} alt='students icon' height={65} /></div>
                         </li>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
-                                <h4 className='text-red-500 text-2xl font-bold'>O'qimaydigonlar</h4>
+                                <h4 className='text-red-500 text-2xl font-bold'>O'qimaydiganlar</h4>
                             </div>
                             <div className="flex items-center justify-between py-4 px-6"><h5 className='text-red-500 text-6xl font-bold'>0</h5> <Image src={block} alt='students icon' height={65} /></div>
                         </li>

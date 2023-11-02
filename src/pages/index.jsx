@@ -45,6 +45,45 @@ let dataArray = [
     img: uzum,
   }
 ]
+let categories = [
+  {
+    id: 0,
+    title: 'Digtal Marketing',
+    courses: 25,
+    color: '#DF385B',
+  },
+  {
+    id: 1,
+    title: 'Web Development',
+    courses: 16,
+    color: '#5AB48E'
+  },
+  {
+    id: 2,
+    title: 'Art & Humanities',
+    courses: 76,
+    color: '#7F56D9'
+  },
+  {
+    id: 3,
+    title: 'Personal Development',
+    courses: 22,
+    color: '#FAB437'
+  },
+  {
+    id: 4,
+    title: 'IT and Software',
+    courses: 110,
+    color: '#2AAA94'
+  },
+  {
+    id: 5,
+    title: 'Graphic Design',
+    courses: 85,
+    color: '#2CD182'
+  },
+
+]
 import { Form, Input, Modal, Select } from 'antd';
 import MiniCard from '@/components/Card/MiniCard'
 import Footer from '@/components/Footer/footer'
@@ -254,11 +293,15 @@ export default function Home() {
             <div className="container mx-auto">
               <h4 className="text-[45px] font-bold text-center leading-[30px] font-['Rowdies'] max-sm:text-3xl">Top <span className='text-[#2AAA94]'> Categories</span></h4>
               <p className='mt-[42px] text-[#4E596B] text-[25px] font-medium text-center max-sm:text-lg max-sm:mt-[20px]'> 12,000+ unique online course list designs</p>
-              <ul className='flex justify-center items-stretch gap-[20px] mt-[100px] max-2xl:flex-wrap '>
-                <li>
-                  <MiniCard />
-                </li>
-                <li className='bg-white flex flex-col items-center py-[37px] px-[29px] w-[253px] rounded-[20px]'>
+              <ul className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 items-stretch gap-[20px] mt-[100px] max-2xl:flex-wrap '>
+                {
+                  categories.map((item, index) => (
+                    <li key={index}>
+                      <MiniCard {...item} />
+                    </li>
+                  ))
+                }
+                {/* <li className='bg-white flex flex-col items-center py-[37px] px-[29px] w-[253px] rounded-[20px]'>
                   <div className="w-[90px] h-[90px] flex justify-center items-center bg-[#5AB48E] rounded-[8px]"><Image src={software} alt='Web Development icon' /></div>
                   <h5 className='mt-[50px] text-[25px] text-[#324361] font-semibold text-center leading-[35px]'>Web Development</h5>
                   <p className='text-[#4F547B] font-medium mt-[40px]'>16 Courses</p>
@@ -282,7 +325,7 @@ export default function Home() {
                   <div className="w-[90px] h-[90px] flex justify-center items-center bg-[#2CD182] rounded-[8px]"><Image src={software} alt='Graphic Design icon' /></div>
                   <h5 className='mt-[50px] text-[25px] text-[#324361] font-semibold text-center leading-[35px]'>Graphic Design</h5>
                   <p className='text-[#4F547B] font-medium mt-[40px]'>85 Courses</p>
-                </li>
+                </li> */}
               </ul>
             </div>
           </section>
@@ -306,9 +349,11 @@ export default function Home() {
                 <p className='text-[#4E596B] text-center mt-[42px] max-lg:mt-[20px] max-sm:text-lg'>What our student say about us</p>
                 <ul className='grid grid-cols-3 mt-[20px] gap-[67px] max-lg:grid-cols-2 max-md:grid-cols-1 pb-14 '>
                   {
-                    service.services.map((item, index) => (
-                      <li key={index}><Card image={'http://api.webhub.uz/' + item.image} title={item.title} handleShow={handleShow} /></li>
-                    ))
+                    service.services.map((item, index) => {
+                      if (index < 3) {
+                        return <li key={index}><Card image={'http://api.webhub.uz/' + item.image} title={item.title} handleShow={handleShow} /></li>
+                      }
+                    })
                   }
                 </ul>
               </div>
