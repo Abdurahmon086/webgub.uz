@@ -10,11 +10,14 @@ import { getData } from '@/service/common'
 import { headers } from '../../../next.config'
 import { useFetch } from '@/hooks/useFetch'
 
-function Students() {
+function Customers() {
     const pathname = usePathname('/').split('/')[2]
     let { data, loading, error } = useFetch('https://api.webhub.uz/api/v1/student');
     if (loading) {
         return (<div>Loading ...</div>)
+    }
+    if (error) {
+        console.log(error);
     }
     return (
         <Layout>
@@ -83,4 +86,4 @@ function Students() {
     )
 }
 
-export default Students
+export default Customers

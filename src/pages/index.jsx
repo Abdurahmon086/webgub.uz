@@ -54,11 +54,10 @@ import { useState } from 'react'
 // import CourseCreate from '@/components/Forms/CourseCreate'
 import { sendData } from '@/service/common'
 
-
 export default function Home() {
   let [more, setMore] = useState(true);
   let [show, setShow] = useState(false);
-  let [courseId, setCourseId] = useState(0);
+
   const [form] = Form.useForm();
   const handleClose = () => {
     setShow(false);
@@ -104,7 +103,7 @@ export default function Home() {
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
             integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           />
         </Head>
         <header className="fixed top-0 left-0 w-full z-50 bg-white py-[30px]">
@@ -319,15 +318,15 @@ export default function Home() {
         <footer style={{ background: "linear-gradient(95deg, #331DA8 0%, #865AEF 100.96%)" }}>
           <Footer />
         </footer >
-        <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossorigin></script>
+        <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js" crossOrigin="anonymous"></script>
 
         <script
           src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js"
-          crossorigin></script>
+          crossOrigin="anonymous"></script>
 
         <script
           src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js"
-          crossorigin></script>
+          crossOrigin="anonymous"></script>
 
         <script>var Alert = ReactBootstrap.Alert;</script>
       </>

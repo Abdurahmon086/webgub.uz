@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation'
 import Layout from './layout'
 import { useFetch } from '@/hooks/useFetch'
 
-function Curses({ onHide }) {
+function Service({ onHide }) {
     const pathname = usePathname('/').split('/')[2]
-    let { data, loading, error } = useFetch('https://api.webhub.uz/api/v1/course');
+    let { data, loading, error } = useFetch('https://api.webhub.uz/api/v1/service');
     console.log(data)
     if (loading) {
         return (<div>Loading ...</div>)
@@ -29,19 +29,19 @@ function Curses({ onHide }) {
                                 <th className="border w-9  text-center">#</th>
                                 <th className="border w-[30%]  text-center">Kurs id</th>
                                 <th className="border w-[25%] text-center">Kurs nomi</th>
-                                <th className="border w-[15%]  text-center">O'quvchilar soni</th>
+                                <th className="border w-[15%]  text-center">Buyurtmacilar soni</th>
                                 <th className="border w-[18%] text-center">Yaratilgan vaqti</th>
                                 <th className="border w-[10%] text-center">Tahrirlash</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {data?.courses.map((item, i) => {
+                            {data?.services.map((item, i) => {
                                 return (
                                     <tr className='flex' key={item._id}>
                                         <th className="border w-9 p-2 text-center">{i + 1}</th>
                                         <td className="border overflow-hidden w-[30%] p-2 text-center font-medium">{item.id}</td>
                                         <td className="border w-[25%] p-2 text-center font-medium">{item.title}</td>
-                                        <td className="border w-[15%] p-2 text-center font-medium">{item.students.length}</td>
+                                        <td className="border w-[15%] p-2 text-center font-medium">{item.users.length}</td>
                                         <td className="border w-[18%] p-2 text-center font-medium">{item.createdAt}</td>
                                         <td className="border w-[10%]  p-2 text-center"> <Button className='w-[34px] h-[34px] border-none bg-yellow-300 mx-auto rounded text-center' variant="primary" onClick={onHide}> <Image src={edit} alt='edit icon' /> </Button> </td>
                                     </tr>
@@ -56,4 +56,4 @@ function Curses({ onHide }) {
 
 }
 
-export default Curses
+export default Service

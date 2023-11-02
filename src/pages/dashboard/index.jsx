@@ -1,31 +1,18 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import Holat from '@/components/Student/Holat'
-import logo from '../../../public/icon/logo.svg'
-import menu from '../../../public/image/menu.png'
-import settings from '../../../public/image/cog.png'
 import user from '../../../public/icon/user.svg'
 import check from '../../../public/icon/check.svg'
-import leftArrow from '../../../public/icon/left_arrow.svg'
 import car from '../../../public/icon/bxs-car.svg'
 import userBX from '../../../public/icon/bxs-user.svg'
 import book from '../../../public/icon/bx-book-bookmark.svg'
 import checkDuble from '../../../public/icon/bx-check-double.svg'
 import block from '../../../public/icon/bx-block.svg'
-import Aside from '@/components/Aside/aside'
-import Students from './students'
-import Link from 'next/link'
-import UsersBoard from './sozlamalar'
-import Curses from './kurslar'
-import AddCourses from '@/components/courses/add'
+
+import Layout from './layout'
 
 function dashboard() {
 
-    const [holat, setHolat] = useState(false)
-    const [add, setAdd] = useState(false)
-    const [menus, setMenus] = useState(false)
-    const [users, setUsers] = useState(true)
     const [data, setData] = useState(null)
     const [course, setCourse] = useState(null)
 
@@ -59,28 +46,14 @@ function dashboard() {
                     crossorigin="anonymous"
                 />
             </Head>
-
-            <header className='top-0 left-0 w-full bg-white flex items-center justify-between px-3 py-4 shadow-lg sticky z-40 '>
-                <a href='/dashboard'><Image height={52} src={logo} alt='webhup logo' /></a>
-                <div className="flex items-center gap-2 cursor-pointer">
-                    <Image src={menu} alt='menu icon' width={35} onClick={() => setMenus(menus == false ? true : false)} />
-                    <Image src={user} alt='user icon' width={35} onClick={() => setUsers(users == false ? true : false)} />
-                    <h4 className='font-bold text-violet-950 text-xl' onClick={() => setUsers(users == false ? true : false)}> Alisher Valiyev</h4>
-                </div>
-                <ul style={(users == true ? { display: "none" } : { display: 'flex' })} className='flex flex-col bg-white absolute z-50 rounded shadow-md w-64 right-2 top-[80px]'>
-                    <li> <Link href='/dashboard/users' className='p-2 flex gap-2 font-medium text-blue-950 text-lg'><Image src={settings} alt='settings icon' width={24} height={18} /> Sozlamalar</Link></li>
-                    <li>  <Link href='/login' className='p-2 flex gap-2 font-medium text-blue-950 text-lg'><Image src={leftArrow} alt='left arrow icon' /> Chiqish</Link></li>
-                </ul>
-            </header>
-            <main className='flex bg-slate-100 h-[100vh]'>
-                <Aside menus={menus} />
-                {/* <section className='p-6'>
+            <Layout>
+                <section className='p-6'>
                     <ul className='flex flex-wrap gap-7'>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
                                 <h4 className='text-blue-500 text-2xl font-bold'>O'quvchilar</h4>
                             </div>
-                            <div className="flex items-center justify-between py-4 px-6"><h5 className='text-blue-500 text-6xl font-bold'>{data?.length}</h5> <Image src={user} alt='students icon' height={65}/></div>
+                            <div className="flex items-center justify-between py-4 px-6"><h5 className='text-blue-500 text-6xl font-bold'>{data?.length}</h5> <Image src={user} alt='students icon' height={65} /></div>
                         </li>
                         <li className='bg-white w-80 rounded-sm shadow-xl'>
                             <div className="p-4 border-b-[1px]">
@@ -119,18 +92,8 @@ function dashboard() {
                             <div className="flex items-center justify-between py-4 px-6"><h5 className='text-blue-800 text-6xl font-bold'>1</h5> <Image src={book} alt='students icon' height={65} /></div>
                         </li>
                     </ul>
-                </section> */}
-                {/* <Students data={data} onHide={() => setHolat(true)} /> */}
-                {/* <UsersBoard /> */}
-                <Curses data={course} onHide={() => setAdd(true)} />
-            </main >
-            <AddCourses
-                show={add}
-                onHide={() => setAdd(false)} />
-            {/* <Holat
-                show={holat}
-                onHide={() => setHolat(false)}
-            /> */}
+                </section>
+            </Layout>
         </>
     )
 }

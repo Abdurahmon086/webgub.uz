@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { useRouter } from 'next/router';
-import { sendData } from '@/service/common';
+
 function login() {
     const router = useRouter();
     const [form] = Form.useForm();
@@ -22,6 +22,7 @@ function login() {
                 ).then((data) => {
                     console.log(data);
                     localStorage.setItem('token', JSON.stringify(data.token))
+                    localStorage.setItem('admin',JSON.stringify(data.admin))
                 }).then(router.push('/dashboard'))
                 .catch(function (res) { console.log(res) })
         });
